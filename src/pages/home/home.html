@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>
+          Profile Search
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-item>
+        <ion-label floating>Enter GitHub Username</ion-label>
+        <ion-input type="text" [(ngModel)]="userName"></ion-input>
+    </ion-item>
+    <ion-fab bottom right>
+        <button ion-fab (click)="getUserInfo()">
+            <ion-icon name="search"></ion-icon>
+        </button>
+    </ion-fab>
+</ion-content>

@@ -1,0 +1,92 @@
+<!--
+  Generated template for the ResultPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="primary">
+        <ion-title>Result</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card *ngIf="show;else showElse" padding="0">
+        <ion-card-header>
+            <h5> Data related to:
+                <ion-badge padding-left padding-right item-end color="danger">{{userNameResult}}</ion-badge>
+            </h5>
+        </ion-card-header>
+        <ion-card-content>
+            <img [src]="userInfoResult.avatar_url" alt="">
+            <ul style="list-style: none; padding: 0; margin-top: 0;">
+                <li>
+                    <ion-badge margin-top="" item-end color="primary">ID:</ion-badge>
+                    {{userInfoResult.id}}
+                </li>
+                <li>
+                    <ion-badge margin-top="" item-end color="primary">Name:</ion-badge>
+                    {{userInfoResult.name}}
+                </li>
+                <li>
+                    <ion-badge margin-top="" item-end color="primary">Bio:</ion-badge>
+                    {{userInfoResult.bio}}
+                </li>
+                <li>
+                    <ion-badge margin-top="" item-end color="primary">Username:</ion-badge>
+                    {{userInfoResult.login}}
+                </li>
+                <li>
+                    <ion-badge margin-top="" item-end color="primary">URL:</ion-badge>
+                    {{userInfoResult.html_url}}
+                </li>
+                <li>
+                    <ion-badge margin-top="" item-end color="primary">Followers:</ion-badge>
+                    {{userInfoResult.followers}}
+                </li>
+                <li>
+                    <ion-badge margin-top="" item-end color="primary">Following:</ion-badge>
+                    {{userInfoResult.following}}
+                </li>
+                <li *ngIf="userInfoResultRepository; else showElseRepo">
+                    <ion-badge margin-top="" item-end color="primary">Repositories:</ion-badge>
+                    {{userInfoResultRepository.length}}
+                    <ul *ngFor="let repo of userInfoResultRepository;let i =index;" style="list-style: none;"
+                        margin-top>
+                        <ion-card padding-bottom padding-left>
+                            <li>
+                                <ion-badge margin-top="" item-end color="danger">Repo ID:</ion-badge>
+                                {{repo.id}}
+                            </li>
+                            <li>
+                                <ion-badge margin-top="" item-end color="danger">Repo name:</ion-badge>
+                                {{repo.name}}
+                            </li>
+                            <li>
+                                <ion-badge  margin-top="" item-end color="danger">Repo description:</ion-badge>
+                                {{repo.description}}
+                            </li>
+                            <li>
+                                <ion-badge  margin-top="" item-end color="danger">Repo URL:</ion-badge>
+                                {{repo.html_url}}
+                            </li>
+                        </ion-card>
+                    </ul>
+                </li>
+                <ng-template #showElseRepo>
+                    <li>This user does not have any repositories yet</li>
+                </ng-template>
+            </ul>
+        </ion-card-content>
+    </ion-card>
+    <ng-template #showElse>
+        <ion-card>
+            <ion-card-content>
+                {{userInfoResult}}
+            </ion-card-content>
+        </ion-card>
+    </ng-template>
+</ion-content>
